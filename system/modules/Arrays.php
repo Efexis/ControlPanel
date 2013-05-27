@@ -20,17 +20,30 @@ $race = array(
     11 => 'Дреней'
 );
 
-$raceImg = array(
-    1 => '<img src="/application/views/img/race/1-0.gif"><img src="/application/views/img/race/1-1.gif">Человек',
-    2 => '<img src="/application/views/img/race/2-0.gif"><img src="/application/views/img/race/2-1.gif">Орк',
-    3 => '<img src="/application/views/img/race/3-0.gif"><img src="/application/views/img/race/3-1.gif">Дворф',
-    4 => '<img src="/application/views/img/race/4-0.gif"><img src="/application/views/img/race/4-1.gif">Ночной Эльф',
-    5 => '<img src="/application/views/img/race/5-0.gif"><img src="/application/views/img/race/5-1.gif">Нежить',
-    6 => '<img src="/application/views/img/race/6-0.gif"><img src="/application/views/img/race/6-1.gif">Таурен',
-    7 => '<img src="/application/views/img/race/7-0.gif"><img src="/application/views/img/race/7-1.gif">Гном',
-    8 => '<img src="/application/views/img/race/8-0.gif"><img src="/application/views/img/race/8-1.gif">Троль',
-    10 => '<img src="/application/views/img/race/10-0.gif"><img src="/application/views/img/race/10-1.gif">Кровавый Эльф',
-    11 => '<img src="/application/views/img/race/11-0.gif"><img src="/application/views/img/race/11-1.gif">Дреней'
+$raceImgM = array(
+    1 => '<img src="application/views/img/race/1-0.gif">',
+    2 => '<img src="application/views/img/race/2-0.gif">',
+    3 => '<img src="application/views/img/race/3-0.gif">',
+    4 => '<img src="application/views/img/race/4-0.gif">',
+    5 => '<img src="application/views/img/race/5-0.gif">',
+    6 => '<img src="application/views/img/race/6-0.gif">',
+    7 => '<img src="application/views/img/race/7-0.gif">',
+    8 => '<img src="application/views/img/race/8-0.gif">',
+    10 => '<img src="application/views/img/race/10-0.gif">',
+    11 => '<img src="application/views/img/race/11-0.gif">'
+);
+
+$raceImgW = array(
+    1 => '<img src="application/views/img/race/1-1.gif">',
+    2 => '<img src="application/views/img/race/2-1.gif">',
+    3 => '<img src="application/views/img/race/3-1.gif">',
+    4 => '<img src="application/views/img/race/4-1.gif">',
+    5 => '<img src="application/views/img/race/5-1.gif">',
+    6 => '<img src="application/views/img/race/6-1.gif">',
+    7 => '<img src="application/views/img/race/7-1.gif">',
+    8 => '<img src="application/views/img/race/8-1.gif">',
+    10 => '<img src="application/views/img/race/10-1.gif">',
+    11 => '<img src="application/views/img/race/11-1.gif">'
 );
 
 // название класса
@@ -48,16 +61,16 @@ $class = array(
 );
 
 $classImg = array(
-    1 => '<img src="/application/views/img/class/1.gif">Воин',
-    2 => '<img src="/application/views/img/class/2.gif">Паладин',
-    3 => '<img src="/application/views/img/class/3.gif">Охотник',
-    4 => '<img src="/application/views/img/class/4.gif">Разбойник',
-    5 => '<img src="/application/views/img/class/5.gif">Жрец',
-    6 => '<img src="/application/views/img/class/6.gif">Рыцарь Смерти',
-    7 => '<img src="/application/views/img/class/7.gif">Шаман',
-    8 => '<img src="/application/views/img/class/8.gif">Маг',
-    9 => '<img src="/application/views/img/class/9.gif">Чернокнижник',
-    11 => '<img src="/application/views/img/class/11.gif">Друид'
+    1 => '<img src="application/views/img/class/1.gif">Воин',
+    2 => '<img src="application/views/img/class/2.gif">Паладин',
+    3 => '<img src="application/views/img/class/3.gif">Охотник',
+    4 => '<img src="application/views/img/class/4.gif">Разбойник',
+    5 => '<img src="application/views/img/class/5.gif">Жрец',
+    6 => '<img src="application/views/img/class/6.gif">Рыцарь Смерти',
+    7 => '<img src="application/views/img/class/7.gif">Шаман',
+    8 => '<img src="application/views/img/class/8.gif">Маг',
+    9 => '<img src="application/views/img/class/9.gif">Чернокнижник',
+    11 => '<img src="application/views/img/class/11.gif">Друид'
 );
 
 // фракция
