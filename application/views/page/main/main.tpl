@@ -30,6 +30,13 @@
 								</span>
                                     <h5>Статистика по классам</h5>
                                 </div>
+								<div class="widget-content nopadding">
+                                    <ul class="recent-posts">
+                                        <?php foreach($statClass as $value): ?>
+                                            <li><?php echo $value['class'] . ' : ' . $value['count'] ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="span4">

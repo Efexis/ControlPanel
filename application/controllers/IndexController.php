@@ -22,7 +22,8 @@ class IndexController {
     }
 	
     public function mainAction() {
-        $this->view->generate('index.tpl', 'page/main/main.tpl');
+		$data['statClass']= $this->model->getStatisticClass();
+        $this->view->generate('index.tpl', 'page/main/main.tpl', $data);
     }
 }
 ?>
