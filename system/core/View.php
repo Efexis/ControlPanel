@@ -12,5 +12,15 @@
  * @version  0.0.1
  */
 
-class View {}
+class View {
+
+    public function generate($template_view, $content_view = null , $data = null) {
+        if ( is_array($data) ) {
+            // преобразуем элементы массива в переменные
+            extract($data);
+        }
+
+        include 'application/views/'.$template_view;
+    }
+}
 ?>
