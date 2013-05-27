@@ -27,6 +27,9 @@ function __autoload($class) {
     @include_once $class . '.php';
 }
 
+$registry = Registry::getInstance();
+$registry['config'] =  parse_ini_file('config.ini');
+
 // Запуск
 $front = FrontController::getInstance();
 $front->route();
