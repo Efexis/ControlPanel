@@ -15,9 +15,9 @@
                         <div class="span4">
                             <div class="widget-box">
                                 <div class="widget-title">
-								<span class="icon">
-									<i class="icon-signal"></i>
-								</span>
+                                <span class="icon">
+                                    <i class="icon-signal"></i>
+                                </span>
                                     <h5>Общая статистика</h5>
                                 </div>
                             </div>
@@ -25,12 +25,12 @@
                         <div class="span4">
                             <div class="widget-box">
                                 <div class="widget-title">
-								<span class="icon">
-									<i class="icon-signal"></i>
-								</span>
+                                <span class="icon">
+                                    <i class="icon-signal"></i>
+                                </span>
                                     <h5>Статистика по классам</h5>
                                 </div>
-								<div class="widget-content nopadding">
+                                <div class="widget-content nopadding">
                                     <ul class="recent-posts">
                                         <?php foreach($statClass as $value): ?>
                                             <li><?php echo $value['class'] . ' : ' . $value['count'] ?></li>
@@ -42,9 +42,9 @@
                         <div class="span4">
                             <div class="widget-box">
                                 <div class="widget-title">
-								<span class="icon">
-									<i class="icon-signal"></i>
-								</span>
+                                <span class="icon">
+                                    <i class="icon-signal"></i>
+                                </span>
                                     <h5>Статистика по расам</h5>
                                 </div>
                             </div>

@@ -20,9 +20,9 @@ class IndexController {
         $this->model = new IndexModel();
         $this->view = new View();
     }
-	
+
     public function mainAction() {
-		$data['statClass']= $this->model->getStatisticClass();
+        $data['statClass']= $this->model->getStatisticClass();
         $this->view->generate('index.tpl', 'page/main/main.tpl', $data);
     }
 }
