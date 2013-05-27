@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="application/views/css/style.color.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="application/views/js/bootstrap.min.js"></script>
+		<script src="application/views/js/menu.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
 <body>
