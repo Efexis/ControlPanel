@@ -25,4 +25,8 @@ set_include_path(get_include_path()
 function __autoload($class) {
     @include_once $class . '.php';
 }
+
+// Запуск
+$front = FrontController::getInstance();
+$front->route();
 ?>
