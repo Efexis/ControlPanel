@@ -30,6 +30,19 @@ function __autoload($class) {
 $registry = Registry::getInstance();
 $registry['config'] =  parse_ini_file('config.ini');
 
+// Устанавливаем соединение с БД
+try {
+    $registry['db.char'] = new PDO("mysql:host={$registry['config']['db.host']};port={$registry['config']['db.port']};dbname={$registry['config']['db.char']};charset=utf8",
+        $registry['config']['db.user'], $registry['config']['db.pass'],
+        array(PDO::ATTR_PERSISTENT => true));
+    $registry['db.auth'] = new PDO("mysql:host={$registry['config']['db.host']};port={$registry['config']['db.port']};dbname={$registry['config']['db.auth']};charset=utf8",
+        $registry['config']['db.user'], $registry['config']['db.pass'],
+        array(PDO::ATTR_PERSISTENT => true));
+} catch(PDOException $e) {
+    echo $e->getMessage();
+    exit;
+}
+
 // Запуск
 $front = FrontController::getInstance();
 $front->route();
