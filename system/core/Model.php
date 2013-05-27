@@ -12,5 +12,15 @@
  * @version  0.0.1
  */
 
-class Model {}
+class Model {
+
+    public $db, $config;
+
+    public function __construct() {
+        $registry = Registry::getInstance();
+        $this->config = $registry['config'];
+        $this->db['auth'] = $registry['db.auth'];;
+        $this->db['char'] = $registry['db.char'];
+    }
+}
 ?>
