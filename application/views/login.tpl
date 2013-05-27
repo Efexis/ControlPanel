@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>WoW Control Panel</title>
+        <title><?php echo $title; ?></title>
         <link rel="stylesheet" href="application/views/css/login.css" />
         <link rel="stylesheet" href="application/views/css/bootstrap.min.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>

@@ -20,6 +20,10 @@ class View {
             extract($data);
         }
 
+        $registry = Registry::getInstance();
+        // получаем заголовок страницы
+        $title = $registry['config']['cp.title'];
+
         include 'application/views/'.$template_view;
     }
 }
