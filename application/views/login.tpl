@@ -19,6 +19,15 @@
         </div>
         <p></p><button class="btn btn-large btn-primary" type="submit">Войти</button></p
     </form>
+    <?php if ($data['error_message']): ?>
+    <div class="span4" id="login-error">
+        <div class="alert alert-error">
+            <h4>Ошибка!</h4>
+            <?php echo $error_message; ?>
+            <a href="#" data-dismiss="alert" class="close">×</a>
+        </div>
+    </div>
+    <?php endif; ?>
 </div>
 </body>
 </html>
