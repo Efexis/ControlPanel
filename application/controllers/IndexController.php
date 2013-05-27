@@ -17,9 +17,12 @@ class IndexController {
     private $model, $view;
 
     public function __construct() {
-        $fc = FrontController::getInstance();
         $this->model = new IndexModel();
         $this->view = new View();
+    }
+	
+    public function mainAction() {
+        $this->view->generate('index.tpl', 'page/main/main.tpl');
     }
 }
 ?>
