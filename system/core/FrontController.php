@@ -38,7 +38,7 @@ class FrontController {
             // выбор экшена
             $this->_action = $splits[1] . 'Action';
         }  else {
-            throw new Exception('Error page');
+            $this->notFound();
         }
     }
 
@@ -50,11 +50,16 @@ class FrontController {
                 $method = $rc->getMethod($this->getAction());
                 $method->invoke($controller);
             } else {
-                throw new Exception('Wrong Action');
+                $this->notFound();
             }
         } else {
-            throw new Exception('Wrong Controller');
+            $this->notFound();
         }
+    }
+
+    public function notFound () {
+        $view = new View();
+        $view->generate('404.tpl');
     }
 
     public function getController() {

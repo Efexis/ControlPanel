@@ -1,0 +1,1 @@
+<img src="application/views/img/404.jpg">
