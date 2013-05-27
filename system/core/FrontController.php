@@ -40,6 +40,13 @@ class FrontController {
         }  else {
             $this->notFound();
         }
+        // проверка на авторизацию
+        if ( $this->_controller != 'AuthController' ) {
+            if ( !isset($_SESSION['session'], $_SESSION['user']) ) {
+                header('Location: ?route=auth/login');
+                exit;
+            }
+        }
     }
 
     public function route() {
