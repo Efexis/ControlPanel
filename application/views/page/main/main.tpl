@@ -33,7 +33,7 @@
                                 <div class="widget-content nopadding">
                                     <ul class="recent-posts">
                                         <?php foreach($statClass as $value): ?>
-                                            <li><?php echo $value['class'] . ' : ' . $value['count'] ?></li>
+                                            <li><?php echo $value['class'] . ' : ' . $value['count']; ?></li>
                                         <?php endforeach; ?>
                                     </ul>
                                 </div>
@@ -46,6 +46,13 @@
                                     <i class="icon-signal"></i>
                                 </span>
                                     <h5>Статистика по расам</h5>
+                                </div>
+                                <div class="widget-content nopadding">
+                                    <ul class="recent-posts">
+                                        <?php foreach($statRace as $value): ?>
+                                            <li><?php echo $value; ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

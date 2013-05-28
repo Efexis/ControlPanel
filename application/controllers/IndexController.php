@@ -22,6 +22,7 @@ class IndexController {
     }
 
     public function mainAction() {
+        $data['statRace'] = $this->model->getStatisticRace();
         $data['statClass']= $this->model->getStatisticClass();
         $this->view->generate('index.tpl', 'page/main/main.tpl', $data);
     }
