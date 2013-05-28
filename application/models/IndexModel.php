@@ -35,6 +35,19 @@ class IndexModel extends Model {
 
         // объеденяем все в 1 массив
         for ($i = 0; $i <= 9 ; ++$i) {
+            if ( $stat_man[$i]['count_man'] == NULL ) {
+                $stat_man[$i]['count_man'] = 0;
+            }
+            if ( $stat_woman[$i]['count_woman'] == NULL ) {
+                $stat_woman[$i]['count_woman'] = 0;
+            }
+            if ( $stat_man[$i]['race'] == NULL ) {
+                if ( $i >= 8) { 
+                    $stat_man[$i]['race'] = $i+2;
+                } else {
+                    $stat_man[$i]['race'] = $i+1;
+                }
+            }
             $stat[$i]['race'] = $stat_man[$i]['race'];
             $stat[$i]['count_man'] = $stat_man[$i]['count_man'];
             $stat[$i]['count_woman'] = $stat_woman[$i]['count_woman'];
@@ -43,7 +56,9 @@ class IndexModel extends Model {
         foreach ($stat as $st) {
             $all = $st['count_man'] + $st['count_woman'];
             $str = $race[$st['race']] . ' : ' . $all;
-            $str .= ' ( '. $raceImgM[$st['race']] . $st['count_man'] .' | '. $raceImgW[$st['race']] . $st['count_woman'] .' )';
+            if ( !$all == 0) {
+                $str .= ' ( '. $raceImgM[$st['race']] . $st['count_man'] .' | '. $raceImgW[$st['race']] . $st['count_woman'] .' )';
+            }
             $arr[] = $str;
         }
         return $arr;
