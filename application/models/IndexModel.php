@@ -81,7 +81,7 @@ class IndexModel extends Model {
                 FROM `{$this->config['db.char']}`.`characters`
                 GROUP BY `class`";
         $stmt = $this->db['char']->query($sql);
-        $stat = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         include "system/modules/Arrays.php";
 
         $i = 0;
@@ -106,6 +106,13 @@ class IndexModel extends Model {
             $statClass[] = $classImg[$val['class']] . ' : ' . $val['count'];
         }
         return $statClass;
+    }
+
+    public function getRealmInfo () {
+        $sql = "SELECT `address`, `name` FROM `{$this->config['db.auth']}`.`realmlist`";
+        $stmt = $this->db['auth']->query($sql);
+        $info = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $info;
     }
 }
 ?>
