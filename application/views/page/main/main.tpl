@@ -20,6 +20,12 @@
                                 </span>
                                     <h5>Общая статистика</h5>
                                 </div>
+                                <div class="widget-content nopadding">
+                                    <ul class="recent-posts">
+                                        <li>Название реалма: <?php echo $realm['name'] ?></li>
+                                        <li>Адрес реалма: <?php echo $realm['address'] ?></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="span4">
