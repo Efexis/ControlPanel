@@ -83,9 +83,27 @@ class IndexModel extends Model {
         $stmt = $this->db['char']->query($sql);
         $stat = $stmt->fetchAll(PDO::FETCH_ASSOC);
         include "system/modules/Arrays.php";
-        foreach ($stat as $key => $value) {
-            $statClass[$key]['class'] = $classImg[$value['class']];
-            $statClass[$key]['count'] = $value['count'];
+
+        $i = 0;
+        foreach ($class as $key => $val) {
+            $stat[$i]['class'] =  $key;
+            if( $result ) {
+                foreach ($result as $v) {
+                    if ( $key == $v['class'] ) {
+                        $stat[$i]['count'] = $v['count'];
+                        break;
+                    } else {
+                        $stat[$i]['count'] = 0;
+                    }
+                }
+            } else {
+                $stat[$i]['count'] = 0;
+            }
+            $i++;
+        }
+        // формируем массив для вывода
+        foreach ($stat as $val) {
+            $statClass[] = $classImg[$val['class']] . ' : ' . $val['count'];
         }
         return $statClass;
     }
