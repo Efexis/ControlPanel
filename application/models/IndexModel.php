@@ -34,23 +34,35 @@ class IndexModel extends Model {
         include "system/modules/Arrays.php";
 
         // объеденяем все в 1 массив
-        for ($i = 0; $i <= 9 ; ++$i) {
-            if ( $stat_man[$i]['count_man'] == NULL ) {
-                $stat_man[$i]['count_man'] = 0;
-            }
-            if ( $stat_woman[$i]['count_woman'] == NULL ) {
-                $stat_woman[$i]['count_woman'] = 0;
-            }
-            if ( $stat_man[$i]['race'] == NULL ) {
-                if ( $i >= 8) { 
-                    $stat_man[$i]['race'] = $i+2;
-                } else {
-                    $stat_man[$i]['race'] = $i+1;
+        $i = 0;
+        foreach ($race as $key => $val) {
+            $stat[$i]['race'] =  $key;
+            if( $stat_man ) {
+                foreach ($stat_man as $v) {
+                    if ( $key == $v['race'] ) {
+                        $stat[$i]['count_man'] = $v['count_man'];
+                        break;
+                    } else {
+                        $stat[$i]['count_man'] = 0;
+                    }
                 }
+            } else {
+                $stat[$i]['count_man'] = 0;
             }
-            $stat[$i]['race'] = $stat_man[$i]['race'];
-            $stat[$i]['count_man'] = $stat_man[$i]['count_man'];
-            $stat[$i]['count_woman'] = $stat_woman[$i]['count_woman'];
+
+            if( $stat_woman ) {
+                foreach ( $stat_woman as $v) {
+                    if ( $key == $v['race'] ) {
+                        $stat[$i]['count_woman'] = $v['count_woman'];
+                        break;
+                    } else {
+                        $stat[$i]['count_woman'] = 0;
+                    }
+                }
+            } else {
+                $stat[$i]['count_woman'] = 0;
+            }
+            $i++;
         }
         // формируем массив для вывода
         foreach ($stat as $st) {
