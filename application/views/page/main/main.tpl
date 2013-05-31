@@ -30,6 +30,7 @@
                                         <li>Создано персонажей: <?php echo $count['chars'] ?></li>
                                         <li>Создано гильдий: <?php echo $count['guild'] ?></li>
                                         <li>Создано команд арены: <?php echo $count['team'] ?></li>
+                                        <li>Начисление АП: <?php echo $time_ap ?></li>
                                     </ul>
                                 </div>
                             </div>

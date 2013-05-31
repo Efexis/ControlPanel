@@ -131,6 +131,13 @@ class IndexModel extends Model {
         return $info;
     }
 
+    public function getTimeArenaPoints () {
+        $sql = "SELECT `value` FROM `{$this->config['db.char']}`.`worldstates` WHERE `entry` = 20001";
+        $stmt = $this->db['char']->query($sql);
+        $info = $stmt->fetch(PDO::FETCH_ASSOC);
+        return date('d-m-Y H:i:s', $info['value']);
+    }
+
     public function getCountChars () {
         $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.char']}`.`characters`";
         $stmt = $this->db['char']->query($sql);
