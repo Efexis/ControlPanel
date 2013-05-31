@@ -131,6 +131,31 @@ class IndexModel extends Model {
         return $info;
     }
 
+    public function getOnlineInfo () {
+        // получаем онлайн орды
+        $sql = "SELECT count(`guid`) AS `count`
+                FROM `{$this->config['db.char']}`.`characters`
+                WHERE `race` IN (2, 5, 6, 8, 10) AND `online` = 1";		
+        $stmt = $this->db['char']->query($sql);
+        $online_horde = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // получаем онлайн альянса
+        $sql = "SELECT count(`guid`) AS `count`
+                FROM `{$this->config['db.char']}`.`characters`
+                WHERE `race` IN (1, 3, 4, 7, 11) AND `online` = 1";		
+        $stmt = $this->db['char']->query($sql);
+        $online_alliance = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        include "system/modules/Arrays.php";
+
+        // формируем строку для вывода
+        $info = $online_horde['count'] + $online_alliance['count'];
+        if ( $info != 0 ) {
+            $info .= ' ( ' . $factionImg['alliance'] . $online_alliance['count'] . ' | ' . $factionImg['horde'] . $online_horde['count'] . ' )';
+        }
+        return $info;
+    }
+
     public function getTimeArenaPoints () {
         $sql = "SELECT `value` FROM `{$this->config['db.char']}`.`worldstates` WHERE `entry` = 20001";
         $stmt = $this->db['char']->query($sql);

@@ -24,6 +24,7 @@
                                     <ul class="recent-posts">
                                         <li>Название реалма: <?php echo $realm['name'] ?></li>
                                         <li>Адрес реалма: <?php echo $realm['address'] ?></li>
+                                        <li>Текущий онлайн: <?php echo $online ?></li>
                                         <li>Максимальный онлайн: <?php echo $max_uptime['maxplayers'] ?></li>
                                         <li>Максимальное время работы: <?php echo $max_uptime['maxuptime'] ?></li>
                                         <li>Создано аккуантов: <?php echo $count['account'] ?></li>

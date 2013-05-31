@@ -6,6 +6,12 @@ $gender = array(
     2 => 'Неизвестно'
 );
 
+// фракция
+$factionImg = array(
+    'alliance' => '<img src="application/views/img/factions/alliance.gif">',
+    'horde' => '<img src="application/views/img/factions/horde.gif">'
+);
+
 // название расы
 $race = array(
     1 => 'Человек',

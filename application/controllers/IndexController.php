@@ -25,6 +25,7 @@ class IndexController {
         $data['statRace'] = $this->model->getStatisticRace();
         $data['statClass']= $this->model->getStatisticClass();
         $data['realm'] =  $this->model->getRealmInfo();
+        $data['online'] =  $this->model->getOnlineInfo();
         $data['max_uptime'] =  $this->model->getMaxUptimeInfo();
         $data['time_ap'] = $this->model->getTimeArenaPoints();
         $data['count']['team'] = $this->model->getCountTeams();
