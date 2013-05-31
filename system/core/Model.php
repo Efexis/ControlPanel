@@ -22,5 +22,17 @@ class Model {
         $this->db['auth'] = $registry['db.auth'];;
         $this->db['char'] = $registry['db.char'];
     }
+
+    public function timeConvert($time) {
+        if ($time >= 86400)
+            $t = date('zд Hч iм', $time);
+        elseif ($time >= 3600)
+            $t = date('Hч iм', $time);
+        elseif ($time >= 60)
+            $t = date('iм', $time);
+        else
+            $t = '01м';
+        return $t;
+    }
 }
 ?>
