@@ -25,6 +25,7 @@ class IndexController {
         $data['statRace'] = $this->model->getStatisticRace();
         $data['statClass']= $this->model->getStatisticClass();
         $data['realm'] =  $this->model->getRealmInfo();
+        $data['max_uptime'] =  $this->model->getMaxUptimeInfo();
         $this->view->generate('index.tpl', 'page/main/main.tpl', $data);
     }
 }

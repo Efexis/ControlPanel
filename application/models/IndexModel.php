@@ -114,5 +114,21 @@ class IndexModel extends Model {
         $info = $stmt->fetch(PDO::FETCH_ASSOC);
         return $info;
     }
+
+    public function getMaxUptimeInfo () {
+        $sql = "SELECT max(`uptime`) AS `maxuptime`, max(`maxplayers`) AS `maxplayers`
+                FROM `{$this->config['db.auth']}`.`uptime`";
+        $stmt = $this->db['auth']->query($sql);
+        $info = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ( !$info['maxplayers'] ) {
+            $info['maxplayers'] = 0;
+        }
+        if ( !$info['maxuptime'] ) {
+            $info['maxuptime'] = 0;
+        } else {
+            $info['maxuptime'] = $this->timeConvert($info['maxuptime']);
+        }
+        return $info;
+    }
 }
 ?>
