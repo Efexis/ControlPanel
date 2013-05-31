@@ -130,5 +130,33 @@ class IndexModel extends Model {
         }
         return $info;
     }
+
+    public function getCountChars () {
+        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.char']}`.`characters`";
+        $stmt = $this->db['char']->query($sql);
+        $count = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $count['count'];
+    }
+
+    public function getCountTeams () {
+        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.char']}`.`arena_team`";
+        $stmt = $this->db['char']->query($sql);
+        $count = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $count['count'];
+    }
+
+    public function getCountGuilds () {
+        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.char']}`.`guild`";
+        $stmt = $this->db['char']->query($sql);
+        $count = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $count['count'];
+    }
+
+    public function getCountAccounts () {
+        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.auth']}`.`account`";
+        $stmt = $this->db['auth']->query($sql);
+        $count = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $count['count'];
+    }
 }
 ?>

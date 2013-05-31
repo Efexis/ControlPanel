@@ -26,6 +26,10 @@
                                         <li>Адрес реалма: <?php echo $realm['address'] ?></li>
                                         <li>Максимальный онлайн: <?php echo $max_uptime['maxplayers'] ?></li>
                                         <li>Максимальное время работы: <?php echo $max_uptime['maxuptime'] ?></li>
+                                        <li>Создано аккуантов: <?php echo $count['account'] ?></li>
+                                        <li>Создано персонажей: <?php echo $count['chars'] ?></li>
+                                        <li>Создано гильдий: <?php echo $count['guild'] ?></li>
+                                        <li>Создано команд арены: <?php echo $count['team'] ?></li>
                                     </ul>
                                 </div>
                             </div>

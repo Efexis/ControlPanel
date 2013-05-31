@@ -26,6 +26,10 @@ class IndexController {
         $data['statClass']= $this->model->getStatisticClass();
         $data['realm'] =  $this->model->getRealmInfo();
         $data['max_uptime'] =  $this->model->getMaxUptimeInfo();
+        $data['count']['team'] = $this->model->getCountTeams();
+        $data['count']['chars'] = $this->model->getCountChars();
+        $data['count']['guild'] = $this->model->getCountGuilds();
+        $data['count']['account'] = $this->model->getCountAccounts();
         $this->view->generate('index.tpl', 'page/main/main.tpl', $data);
     }
 }
