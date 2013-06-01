@@ -45,6 +45,30 @@ class CharactersModel extends Model {
         }
     }
 
+    public function changeCharName($char, $name, $type) {
+        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && preg_match("/^[a-zA-Zа-яА-ЯёЁ]+$/u", $name) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
+            $sql = "UPDATE `{$this->config['db.char']}`.`characters`
+                    SET `name` = :name
+                    WHERE `$type` = :char";
+            $stmt = $this->db['char']->prepare($sql);
+
+            // устанавливаем нужный регистр
+            mb_internal_encoding("UTF-8");
+            $name = mb_strtoupper(mb_substr($name,0,1)).mb_strtolower(mb_substr($name,1));
+
+            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':char', $char);
+            $stmt->execute();
+            if ( $stmt->rowCount() == 1 ) {
+                $this->message[1] = 'Смена имени прошла успешно';
+            } else {
+                $this->message[0] = 'Персонаж с таким именем или id не найден';
+            }
+        } else {
+            $this->message[0] = 'Введены некорректные данные';
+        }
+    }
+
     public function changeCharRace($char, $race, $type) {
         if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && ($race > 0 && $race < 9) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
             $sql = "UPDATE `{$this->config['db.char']}`.`characters`
