@@ -20,4 +20,10 @@ class CharactersController {
         $this->model = new CharactersModel();
         $this->view = new View();
     }
+
+    public function searchAction () {
+        $data['charInfo'] = isset($_POST['character'], $_POST['type']) ? $this->model->searchChar($_POST['character'], $_POST['type']) : NULL;
+        $data['message'] = $this->model->message;
+        $this->view->generate('index.tpl', 'page/characters/search.tpl' , $data);
+    }
 }
