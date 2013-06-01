@@ -47,7 +47,7 @@
                                 <div class="widget-content nopadding">
                                     <ul class="recent-posts">
                                         <?php foreach($statClass as $value): ?>
-                                            <li><?php echo $value['class'] . ' : ' . $value['count']; ?></li>
+                                            <li><?php echo $value; ?></li>
                                         <?php endforeach; ?>
                                     </ul>
                                 </div>
