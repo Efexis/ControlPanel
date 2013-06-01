@@ -45,6 +45,25 @@ class CharactersModel extends Model {
         }
     }
 
+    public function changeCharRace($char, $race, $type) {
+        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && ($race > 0 && $race < 9) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
+            $sql = "UPDATE `{$this->config['db.char']}`.`characters`
+                    SET `race` = :race
+                    WHERE `$type` = :char";
+            $stmt = $this->db['char']->prepare($sql);
+            $stmt->bindValue(':race', (int)$race);
+            $stmt->bindValue(':char', $char);
+            $stmt->execute();
+            if ( $stmt->rowCount() == 1 ) {
+                $this->message[1] = 'Смена расы прошла успешно';
+            } else {
+                $this->message[0] = 'Персонаж с таким именем или id не найден';
+            }
+        } else {
+            $this->message[0] = 'Введены некорректные данные';
+        }
+    }
+
     public function getOnlineChar($online) {
         if ($online == 1)
             return "<font color=green>Online</font>";

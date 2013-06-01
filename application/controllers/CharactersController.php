@@ -26,4 +26,12 @@ class CharactersController {
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/characters/search.tpl' , $data);
     }
+
+    public function changeRaceAction () {
+        if ( isset($_POST['character'], $_POST['race'], $_POST['type']) ) {
+            $this->model->changeCharRace($_POST['character'], $_POST['race'], $_POST['type']);
+        }
+        $data['message'] = $this->model->message;
+        $this->view->generate('index.tpl', 'page/characters/changerace.tpl' , $data);
+    }
 }
