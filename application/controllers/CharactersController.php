@@ -42,4 +42,12 @@ class CharactersController {
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/characters/changeclass.tpl' , $data);
     }
+
+    public function changeLevelAction () {
+        if ( isset($_POST['character'], $_POST['level'], $_POST['type']) ) {
+            $this->model->changeCharLevel($_POST['character'], $_POST['level'], $_POST['type']);
+        }
+        $data['message'] = $this->model->message;
+        $this->view->generate('index.tpl', 'page/characters/changelevel.tpl' , $data);
+    }
 }

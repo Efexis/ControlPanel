@@ -83,6 +83,25 @@ class CharactersModel extends Model {
         }
     }
 
+    public function changeCharLevel($char, $level, $type) {
+        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && ($level > 0 && $level < 256) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
+            $sql = "UPDATE `{$this->config['db.char']}`.`characters`
+                    SET `level` = :level
+                    WHERE `$type` = :char";
+            $stmt = $this->db['char']->prepare($sql);
+            $stmt->bindValue(':level', (int)$level);
+            $stmt->bindValue(':char', $char);
+            $stmt->execute();
+            if ( $stmt->rowCount() == 1 ) {
+                $this->message[1] = 'Смена уровня прошла успешно';
+            } else {
+                $this->message[0] = 'Персонаж с таким именем или id не найден';
+            }
+        } else {
+            $this->message[0] = 'Введены некорректные данные';
+        }
+    }
+
     public function getOnlineChar($online) {
         if ($online == 1)
             return "<font color=green>Online</font>";
