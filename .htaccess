@@ -1,5 +1,13 @@
 AddDefaultCharset UTF-8
 
+<Files "config.ini">
+Order Deny,Allow
+Deny from all
+</Files>
+
 RewriteEngine on
 
-RewriteRule !\.(js|gif|png|jpg|css)$ index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php [L,QSA]
