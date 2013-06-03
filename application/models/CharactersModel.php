@@ -21,7 +21,7 @@ class CharactersModel extends Model {
             $sql = "SELECT `guid`, `account`, `name`, `race`, `class`,
                             `gender`, `level`, `online`, `totaltime`,
                             `arenaPoints`, `totalHonorPoints`, `todayHonorPoints`,
-                            `yesterdayHonorPoints`, `totalKills`, `todayKills`, `yesterdayKills`
+                            `yesterdayHonorPoints`, `totalKills`, `todayKills`, `yesterdayKills`, `zone`
                     FROM `{$this->config['db.char']}`.`characters`
                     WHERE `$type` = :char";
             $stmt = $this->db['char']->prepare($sql);
@@ -34,6 +34,7 @@ class CharactersModel extends Model {
                 $charInfo['race'] = $race[$charInfo['race']];
                 $charInfo['class'] = $class[$charInfo['class']];
                 $charInfo['gender'] = $gender[$charInfo['gender']];
+                $charInfo['zone'] = $zone[$charInfo['zone']];
                 $charInfo['totaltime'] = $this->timeConvert($charInfo['totaltime']);
                 $charInfo['online'] = $this->getOnlineChar($charInfo['online']);
                 return  $charInfo;

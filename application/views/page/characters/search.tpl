@@ -93,6 +93,10 @@
                                 <td><?php echo $charInfo['yesterdayKills'] ?></td>
                             </tr>
                             <tr>
+                                <td>Локация</td>
+                                <td><?php echo $charInfo['zone'] ?></td>
+                            </tr>
+                            <tr>
                                 <td>Статус</td>
                                 <td><?php echo $charInfo['online'] ?></td>
                             </tr>
