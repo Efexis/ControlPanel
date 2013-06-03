@@ -17,7 +17,7 @@ class AuthModel extends Model {
     public $error_message;
 
     public function isValidUser() {
-        if ( isset($_POST['user'], $_POST['pass']) ) {
+        if ( isset($_POST['user'], $_POST['pass'], $_POST['captcha']) && $_POST['captcha'] == $_SESSION['captcha'] ) {
             if ( !empty($_POST['user']) && !empty($_POST['pass']) ) {
                 if ( preg_match("/^[a-zA-Z0-9]+$/", $_POST['user']) &&
                      preg_match("/^\w*$/", $_POST['pass'])) {
