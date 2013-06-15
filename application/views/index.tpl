@@ -51,7 +51,7 @@
         <li class="submenu">
             <a href="#"><i class="icon-th-list"></i> <span>Управление гильдиями</span></a>
             <ul>
-                <li><a href="#">Поиск гильдии</a></li>
+                <li><a href="?route=guild/search">Поиск гильдии</a></li>
                 <li><a href="#">Редактирование гильдии</a></li>
             </ul>
         </li>
