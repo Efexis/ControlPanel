@@ -34,5 +34,16 @@ class Model {
             $t = '01м';
         return $t;
     }
+
+    public function goldConvert($copper) {
+        if ( $copper == 0 ) {
+            return 0;
+        }
+        $c = $copper % 100;
+        $s = floor($copper / 100) % 100;
+        $g = floor($copper / (100 * 100));
+
+        return $g.'<img src="application/views/img/money/gold.png"></img> '.$s.'<img src="application/views/img/money/silver.png"></img> '.$c.'<img src="application/views/img/money/copper.png"></img>';
+    }
 }
 ?>
