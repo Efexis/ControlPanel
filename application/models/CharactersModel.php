@@ -19,7 +19,7 @@ class CharactersModel extends Model {
     public function searchChar($char, $type) {
         if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
             $sql = "SELECT `guid`, `account`, `name`, `race`, `class`,
-                            `gender`, `level`, `online`, `totaltime`,
+                            `gender`, `level`, `money`, `online`, `totaltime`,
                             `arenaPoints`, `totalHonorPoints`, `todayHonorPoints`,
                             `yesterdayHonorPoints`, `totalKills`, `todayKills`, `yesterdayKills`, `zone`
                     FROM `{$this->config['db.char']}`.`characters`
@@ -33,6 +33,7 @@ class CharactersModel extends Model {
                 $charInfo['faction'] = $faction[$charInfo['race']];
                 $charInfo['race'] = $race[$charInfo['race']];
                 $charInfo['class'] = $class[$charInfo['class']];
+                $charInfo['money'] = $this->goldConvert($charInfo['money']);
                 $charInfo['gender'] = $gender[$charInfo['gender']];
                 $charInfo['zone'] = $zone[$charInfo['zone']];
                 $charInfo['totaltime'] = $this->timeConvert($charInfo['totaltime']);

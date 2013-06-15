@@ -61,6 +61,10 @@
                                 <td><?php echo $charInfo['level'] ?></td>
                             </tr>
                             <tr>
+                                <td>Денег</td>
+                                <td><?php echo $charInfo['money'] ?></td>
+                            </tr>
+                            <tr>
                                 <td>Проведенно времени в игре</td>
                                 <td><?php echo $charInfo['totaltime'] ?></td>
                             </tr>
