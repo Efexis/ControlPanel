@@ -22,6 +22,8 @@ class TeamController {
     }
 
     public function searchAction() {
-        $this->view->generate('index.tpl', 'page/team/search.tpl');
+        $data['atInfo'] = isset($_POST['at'], $_POST['at_type'], $_POST['type']) ? $this->model->searchTeam($_POST['at'], $_POST['at_type'], $_POST['type']) : NULL;
+        $data['message'] = $this->model->message;
+        $this->view->generate('index.tpl', 'page/team/search.tpl', $data);
     }
 }

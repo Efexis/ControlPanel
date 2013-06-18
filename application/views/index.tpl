@@ -42,9 +42,9 @@
             </ul>
         </li>
         <li class="submenu">
-            <a href="#"><i class="icon-th-list"></i> <span>Управление AT</span></a>
+            <a href="#"><i class="icon-th-list"></i> <span>Управление командами</span></a>
             <ul>
-                <li><a href="#">Поиск команды</a></li>
+                <li><a href="?route=team/search">Поиск команды</a></li>
                 <li><a href="#">Редактирование команды</a></li>
             </ul>
         </li>
