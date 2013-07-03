@@ -25,6 +25,7 @@ class AuthController {
     public function logoutAction() {
         unset($_SESSION['session']);
         unset($_SESSION['user']);
+        session_destroy();
         header('Location: ?route=index/index');
         exit;
     }
