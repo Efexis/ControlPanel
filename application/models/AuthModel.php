@@ -23,7 +23,7 @@ class AuthModel extends Model {
                      preg_match("/^\w*$/", $_POST['pass'])) {
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
-                    $sql = "SELECT `a`.`id`, `a`.`username`, `aa`.`gmlevel`
+                    $sql = "SELECT `a`.`id`, `a`.`username`, `a`.`email`, `aa`.`gmlevel`
                             FROM `".$this->config['db.auth']."`.`account` AS `a`
                             LEFT JOIN `".$this->config['db.auth']."`.`account_access` AS `aa` ON `aa`.`id` = `a`.`id`
                             WHERE `a`.`sha_pass_hash` = SHA1(CONCAT(UPPER('".$user."'),':',UPPER('".$pass."'))) AND
@@ -33,6 +33,10 @@ class AuthModel extends Model {
                     if ( $result->rowCount() == 1 ) {
                         $_SESSION['session'] = session_id();
                         $_SESSION['user'] = $user;
+
+                        // информация об аккуанте
+                        $_SESSION['accInfo'] =  $result->fetch(PDO::FETCH_ASSOC);
+                        $_SESSION['accInfo']['ip'] = $_SERVER['REMOTE_ADDR']
                         header('Location: ?route=index/main');
                         exit;
                     } else {

@@ -24,6 +24,11 @@ class View {
         // получаем заголовок страницы
         $title = $registry['config']['cp.title'];
 
+        // информация об аккуанте
+        if ( isset($_SESSION['accInfo']) ) {
+            $accInfo = $_SESSION['accInfo'];
+        }
+
         include 'application/views/'.$template_view;
     }
 }

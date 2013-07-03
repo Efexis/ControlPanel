@@ -314,6 +314,13 @@ a:hover {
 	border-width: 1px;
 	border-color: transparent;	
 }
+#acc-info {
+	text-shadow: none;
+	color: #000000;
+	padding: 0 5px;
+	text-align: left;
+}
+
 /* Footer */
 #footer {
 	text-align: center;
