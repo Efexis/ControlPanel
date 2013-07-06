@@ -26,7 +26,7 @@ class View {
 
         // информация об аккуанте
         if ( isset($_SESSION['accInfo']) ) {
-            $accInfo = $_SESSION['accInfo'];
+            $profile = $_SESSION['accInfo'];
         }
 
         include 'application/views/'.$template_view;

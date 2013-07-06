@@ -20,11 +20,11 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon icon-user"></i> <span id="accinfo" class="text">Профиль</span></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <div id="acc-info">
-                    <li>ID: <?php echo $accInfo['id']; ?></li>
-                    <li>Аккуант: <?php echo $accInfo['username']; ?></li>
-                    <li>E-mail: <?php echo $accInfo['email']; ?></li>
-                    <li>Уровень: <?php echo $accInfo['gmlevel']; ?></li>
-                    <li>IP: <?php echo $accInfo['ip']; ?></li>
+                    <li>ID: <?php echo $profile['id']; ?></li>
+                    <li>Аккуант: <?php echo $profile['username']; ?></li>
+                    <li>E-mail: <?php echo $profile['email']; ?></li>
+                    <li>Уровень: <?php echo $profile['gmlevel']; ?></li>
+                    <li>IP: <?php echo $profile['ip']; ?></li>
                 </div>
             </ul>
         </li>
