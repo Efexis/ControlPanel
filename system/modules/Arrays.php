@@ -1,4 +1,10 @@
 <?php
+// онлайн
+$online = array(
+    0 => '<font color=red>Offline</font>',
+    1 => '<font color=green>Online</font>'
+);
+
 // пол
 $gender = array(
     0 => 'Мужчина',

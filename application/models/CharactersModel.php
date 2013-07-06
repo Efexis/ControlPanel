@@ -37,7 +37,7 @@ class CharactersModel extends Model {
                 $charInfo['gender'] = $gender[$charInfo['gender']];
                 $charInfo['zone'] = $zone[$charInfo['zone']];
                 $charInfo['totaltime'] = $this->timeConvert($charInfo['totaltime']);
-                $charInfo['online'] = $this->getOnlineChar($charInfo['online']);
+                $charInfo['online'] = $online[$charInfo['online']];
                 return  $charInfo;
             } else {
                 $this->message = 'Персонаж с таким именем или id не найден';
@@ -126,13 +126,6 @@ class CharactersModel extends Model {
         } else {
             $this->message[0] = 'Введены некорректные данные';
         }
-    }
-
-    public function getOnlineChar($online) {
-        if ($online == 1)
-            return "<font color=green>Online</font>";
-        else
-            return "<font color=red>Offline</font>";
     }
 }
 ?>
