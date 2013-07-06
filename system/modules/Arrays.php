@@ -5,6 +5,13 @@ $online = array(
     1 => '<font color=green>Online</font>'
 );
 
+// дополнение
+$expansion = array(
+    0 => 'Classic',
+    1 => 'TBC',
+    2 => 'WotLK'
+);
+
 // пол
 $gender = array(
     0 => 'Мужчина',

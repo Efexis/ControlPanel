@@ -48,7 +48,7 @@
         <li class="submenu">
             <a href="#"><i class="icon-th-list"></i> <span>Управление аккуантами</span></a>
             <ul>
-                <li><a href="#">Поиск аккуанта</a></li>
+                <li><a href="?route=account/search">Поиск аккуанта</a></li>
                 <li><a href="#">Редактирование аккуанта</a></li>
             </ul>
         </li>

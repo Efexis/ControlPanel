@@ -22,6 +22,8 @@ class AccountController {
     }
 
     public function searchAction () {
-        $this->view->generate('index.tpl', 'page/account/search.tpl');
+        $data['accInfo'] = isset($_POST['account'], $_POST['type']) ? $this->model->searchAccount($_POST['account'], $_POST['type']) : NULL;
+        $data['message'] = $this->model->message;
+        $this->view->generate('index.tpl', 'page/account/search.tpl', $data);
     }
 }
