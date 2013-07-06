@@ -36,7 +36,7 @@ class AuthModel extends Model {
 
                         // информация об аккуанте
                         $_SESSION['accInfo'] =  $result->fetch(PDO::FETCH_ASSOC);
-                        $_SESSION['accInfo']['ip'] = $_SERVER['REMOTE_ADDR']
+                        $_SESSION['accInfo']['ip'] = $_SERVER['REMOTE_ADDR'];
                         header('Location: ?route=index/main');
                         exit;
                     } else {
