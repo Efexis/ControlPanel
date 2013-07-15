@@ -5,8 +5,7 @@ html body {
 }
 
 #login-error {
-    margin: 60px auto;
-
+    margin: 0 320px;
 }
 
 .form-signin {
