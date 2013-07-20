@@ -23,11 +23,11 @@ class AuthModel extends Model {
                      preg_match("/^\w*$/", $_POST['pass'])) {
                     $user = $_POST['user'];
                     $pass = $_POST['pass'];
-                    $sql = "SELECT `a`.`id`, `a`.`username`, `a`.`email`, `aa`.`gmlevel`
-                            FROM `".$this->config['db.auth']."`.`account` AS `a`
-                            LEFT JOIN `".$this->config['db.auth']."`.`account_access` AS `aa` ON `aa`.`id` = `a`.`id`
-                            WHERE `a`.`sha_pass_hash` = SHA1(CONCAT(UPPER('".$user."'),':',UPPER('".$pass."'))) AND
-                                    `aa`.`gmlevel` >= " . $this->config['cp.gmlevel'];
+                    $sql = 'SELECT `a`.`id`, `a`.`username`, `a`.`email`, `aa`.`gmlevel`
+                            FROM `'.$this->config['db.auth'].'`.`account` AS `a`
+                            LEFT JOIN `'.$this->config['db.auth'].'`.`account_access` AS `aa` ON `aa`.`id` = `a`.`id`
+                            WHERE `a`.`sha_pass_hash` = SHA1(CONCAT(UPPER("'.$user.'"),":",UPPER("'.$pass.'"))) AND
+                                    `aa`.`gmlevel` >= ' . $this->config['cp.gmlevel'];
                     $result = $this->db['auth']->query($sql);
 
                     if ( $result->rowCount() == 1 ) {

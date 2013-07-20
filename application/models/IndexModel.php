@@ -16,18 +16,18 @@ class IndexModel extends Model {
     
     public function getStatisticRace () {
         // получаем статистику рас мужского пола
-        $sql = "SELECT `race`, count(`race`) AS `count_man`
-                FROM `{$this->config['db.char']}`.`characters`
+        $sql = 'SELECT `race`, count(`race`) AS `count_man`
+                FROM `'.$this->config['db.char'].'`.`characters`
                 WHERE `gender` = 0
-                GROUP BY `race`";
+                GROUP BY `race`';
         $stmt = $this->db['char']->query($sql);
         $stat_man = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // получаем статистику рас женского пола
-        $sql = "SELECT `race`, count(`race`) AS `count_woman`
-                FROM `{$this->config['db.char']}`.`characters`
+        $sql = 'SELECT `race`, count(`race`) AS `count_woman`
+                FROM `'.$this->config['db.char'].'`.`characters`
                 WHERE `gender` = 1
-                GROUP BY `race`";
+                GROUP BY `race`';
         $stmt = $this->db['char']->query($sql);
         $stat_woman = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -77,9 +77,9 @@ class IndexModel extends Model {
     }
 
     public function getStatisticClass () {
-        $sql = "SELECT `class`, count(`class`) AS `count`
-                FROM `{$this->config['db.char']}`.`characters`
-                GROUP BY `class`";
+        $sql = 'SELECT `class`, count(`class`) AS `count`
+                FROM `'.$this->config['db.char'].'`.`characters`
+                GROUP BY `class`';
         $stmt = $this->db['char']->query($sql);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         include "system/modules/Arrays.php";
@@ -109,15 +109,15 @@ class IndexModel extends Model {
     }
 
     public function getRealmInfo () {
-        $sql = "SELECT `address`, `name` FROM `{$this->config['db.auth']}`.`realmlist`";
+        $sql = 'SELECT `address`, `name` FROM `'.$this->config['db.auth'].'`.`realmlist`';
         $stmt = $this->db['auth']->query($sql);
         $info = $stmt->fetch(PDO::FETCH_ASSOC);
         return $info;
     }
 
     public function getMaxUptimeInfo () {
-        $sql = "SELECT max(`uptime`) AS `maxuptime`, max(`maxplayers`) AS `maxplayers`
-                FROM `{$this->config['db.auth']}`.`uptime`";
+        $sql = 'SELECT max(`uptime`) AS `maxuptime`, max(`maxplayers`) AS `maxplayers`
+                FROM `'.$this->config['db.auth'].'`.`uptime`';
         $stmt = $this->db['auth']->query($sql);
         $info = $stmt->fetch(PDO::FETCH_ASSOC);
         if ( !$info['maxplayers'] ) {
@@ -133,16 +133,16 @@ class IndexModel extends Model {
 
     public function getOnlineInfo () {
         // получаем онлайн орды
-        $sql = "SELECT count(`guid`) AS `count`
-                FROM `{$this->config['db.char']}`.`characters`
-                WHERE `race` IN (2, 5, 6, 8, 10) AND `online` = 1";		
+        $sql = 'SELECT count(`guid`) AS `count`
+                FROM `'.$this->config['db.char'].'`.`characters`
+                WHERE `race` IN (2, 5, 6, 8, 10) AND `online` = 1';
         $stmt = $this->db['char']->query($sql);
         $online_horde = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // получаем онлайн альянса
-        $sql = "SELECT count(`guid`) AS `count`
-                FROM `{$this->config['db.char']}`.`characters`
-                WHERE `race` IN (1, 3, 4, 7, 11) AND `online` = 1";		
+        $sql = 'SELECT count(`guid`) AS `count`
+                FROM `'.$this->config['db.char'].'`.`characters`
+                WHERE `race` IN (1, 3, 4, 7, 11) AND `online` = 1';
         $stmt = $this->db['char']->query($sql);
         $online_alliance = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -157,35 +157,35 @@ class IndexModel extends Model {
     }
 
     public function getTimeArenaPoints () {
-        $sql = "SELECT `value` FROM `{$this->config['db.char']}`.`worldstates` WHERE `entry` = 20001";
+        $sql = 'SELECT `value` FROM `'.$this->config['db.char'].'`.`worldstates` WHERE `entry` = 20001';
         $stmt = $this->db['char']->query($sql);
         $info = $stmt->fetch(PDO::FETCH_ASSOC);
         return date('d-m-Y H:i:s', $info['value']);
     }
 
     public function getCountChars () {
-        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.char']}`.`characters`";
+        $sql = 'SELECT count(*) AS `count` FROM `'.$this->config['db.char'].'`.`characters`';
         $stmt = $this->db['char']->query($sql);
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
         return $count['count'];
     }
 
     public function getCountTeams () {
-        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.char']}`.`arena_team`";
+        $sql = 'SELECT count(*) AS `count` FROM `'.$this->config['db.char'].'`.`arena_team`';
         $stmt = $this->db['char']->query($sql);
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
         return $count['count'];
     }
 
     public function getCountGuilds () {
-        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.char']}`.`guild`";
+        $sql = 'SELECT count(*) AS `count` FROM `'.$this->config['db.char'].'`.`guild`';
         $stmt = $this->db['char']->query($sql);
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
         return $count['count'];
     }
 
     public function getCountAccounts () {
-        $sql = "SELECT count(*) AS `count` FROM `{$this->config['db.auth']}`.`account`";
+        $sql = 'SELECT count(*) AS `count` FROM `'.$this->config['db.auth'].'`.`account`';
         $stmt = $this->db['auth']->query($sql);
         $count = $stmt->fetch(PDO::FETCH_ASSOC);
         return $count['count'];

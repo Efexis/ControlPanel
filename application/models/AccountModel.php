@@ -18,11 +18,11 @@ class AccountModel extends Model {
 
     public function searchAccount($acc, $type) {
         if ( preg_match("/^([a-zA-Z]{1,32}|[0-9]{1,10})$/u", $acc) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
-            $sql = "SELECT `aa`.`gmlevel`, `a`.`id`, `a`.`username`, `a`.`email`, `a`.`joindate`, `a`.`last_ip`,
+            $sql = 'SELECT `aa`.`gmlevel`, `a`.`id`, `a`.`username`, `a`.`email`, `a`.`joindate`, `a`.`last_ip`,
                             `a`.`locked`, `a`.`last_login`, `a`.`online`, `a`.`expansion`
-                    FROM `".$this->config['db.auth']."`.`account` AS `a`
-                    LEFT JOIN `".$this->config['db.auth']."`.`account_access` AS `aa` ON `aa`.`id` = `a`.`id`
-                    WHERE `a`.`$type` = :acc";
+                    FROM `'.$this->config['db.auth'].'`.`account` AS `a`
+                    LEFT JOIN `'.$this->config['db.auth'].'`.`account_access` AS `aa` ON `aa`.`id` = `a`.`id`
+                    WHERE `a`.`'.$type.'` = :acc';
             $stmt = $this->db['auth']->prepare($sql);
             $stmt->bindValue(':acc', $acc);
             $stmt->execute();

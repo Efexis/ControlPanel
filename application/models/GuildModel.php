@@ -19,11 +19,11 @@ class GuildModel extends Model {
     public function searchGuild($guild, $type) {
         $guild = trim($guild);
         if ( preg_match("/^([a-zA-Z\s]{2,24}|[а-яА-ЯёЁ\s]{2,24}|[0-9]{1,10})$/u", $guild) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
-            $sql = "SELECT `c`.`name` as `leader_name`, count(`gm`.`guid`) as `count_member`, `g`.`guildid`, `g`.`name`, `g`.`leaderguid`, `g`.`info`, `g`.`motd`, `g`.`createdate`, `g`.`BankMoney`
-                    FROM `".$this->config['db.char']."`.`guild` as `g`
-                    JOIN `".$this->config['db.char']."`.`characters` AS `c` ON `c`.`guid` = `g`.`leaderguid`
-                    JOIN `".$this->config['db.char']."`.`guild_member` AS `gm` ON `gm`.`guildid` = `g`.`guildid`
-                    WHERE `g`.`$type` = :guild";
+            $sql = 'SELECT `c`.`name` as `leader_name`, count(`gm`.`guid`) as `count_member`, `g`.`guildid`, `g`.`name`, `g`.`leaderguid`, `g`.`info`, `g`.`motd`, `g`.`createdate`, `g`.`BankMoney`
+                    FROM `'.$this->config['db.char'].'`.`guild` as `g`
+                    JOIN `'.$this->config['db.char'].'`.`characters` AS `c` ON `c`.`guid` = `g`.`leaderguid`
+                    JOIN `'.$this->config['db.char'].'`.`guild_member` AS `gm` ON `gm`.`guildid` = `g`.`guildid`
+                    WHERE `g`.`'.$type.'` = :guild';
             $stmt = $this->db['char']->prepare($sql);
             $stmt->bindValue(':guild', $guild);
             $stmt->execute();
