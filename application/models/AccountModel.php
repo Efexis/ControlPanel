@@ -17,7 +17,7 @@ class AccountModel extends Model {
     public $message;
 
     public function searchAccount($acc, $type) {
-        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $acc) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
+        if ( preg_match("/^([a-zA-Z]{1,32}|[0-9]{1,10})$/u", $acc) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
             $sql = "SELECT `aa`.`gmlevel`, `a`.`id`, `a`.`username`, `a`.`email`, `a`.`joindate`, `a`.`last_ip`,
                             `a`.`locked`, `a`.`last_login`, `a`.`online`, `a`.`expansion`
                     FROM `".$this->config['db.auth']."`.`account` AS `a`

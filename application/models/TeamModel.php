@@ -18,7 +18,7 @@ class TeamModel extends Model{
 
     public function searchTeam($at, $at_type, $type) {
         $guild = trim($at);
-        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9\s]+$/u", $at) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
+        if ( preg_match("/^([a-zA-Z\s]{2,24}|[а-яА-ЯёЁ\s]{2,24}|[0-9]{1,10})$/u", $at) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
             $sql = "SELECT `c`.`name` as `captain_name`, `at`.`arenaTeamId`, `at`.`name`, `at`.`captainGuid`, `at`.`type`, `at`.`rating`, `at`.`seasonGames`, `at`.`seasonWins`, `at`.`weekGames`, `at`.`weekWins`, `at`.`rank`
                     FROM `".$this->config['db.char']."`.`arena_team` as `at`
                     JOIN `".$this->config['db.char']."`.`characters` AS `c` ON `c`.`guid` = `at`.`captainGuid`

@@ -17,7 +17,7 @@ class CharactersModel extends Model {
     public $message;
 
     public function searchChar($char, $type) {
-        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
+        if ( preg_match("/^([a-zA-Z]{2,12}|[а-яА-ЯёЁ]{2,12}|[0-9]{1,10})$/u", $char) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
             $sql = "SELECT `guid`, `account`, `name`, `race`, `class`,
                             `gender`, `level`, `money`, `online`, `totaltime`,
                             `arenaPoints`, `totalHonorPoints`, `todayHonorPoints`,
