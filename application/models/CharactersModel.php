@@ -18,12 +18,12 @@ class CharactersModel extends Model {
 
     public function searchChar($char, $type) {
         if ( preg_match("/^([a-zA-Z]{2,12}|[а-яА-ЯёЁ]{2,12}|[0-9]{1,10})$/u", $char) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
-            $sql = "SELECT `guid`, `account`, `name`, `race`, `class`,
+            $sql = 'SELECT `guid`, `account`, `name`, `race`, `class`,
                             `gender`, `level`, `money`, `online`, `totaltime`,
                             `arenaPoints`, `totalHonorPoints`, `todayHonorPoints`,
                             `yesterdayHonorPoints`, `totalKills`, `todayKills`, `yesterdayKills`, `zone`
-                    FROM `{$this->config['db.char']}`.`characters`
-                    WHERE `$type` = :char";
+                    FROM `'.$this->config['db.char'].'`.`characters`
+                    WHERE `'.$type.'` = :char';
             $stmt = $this->db['char']->prepare($sql);
             $stmt->bindValue(':char', $char);
             $stmt->execute();
@@ -47,11 +47,11 @@ class CharactersModel extends Model {
         }
     }
 
-    public function changeCharName($char, $name, $type) {
-        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && preg_match("/^[a-zA-Zа-яА-ЯёЁ]+$/u", $name) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
-            $sql = "UPDATE `{$this->config['db.char']}`.`characters`
+    public function changeCharName($char, $name) {
+        if ( preg_match("/^[0-9]+$/", $char) && preg_match("/^([a-zA-Z]{2,12}|[а-яА-ЯёЁ]{2,12})$/u", $name) ) {
+            $sql = 'UPDATE `'.$this->config['db.char'].'`.`characters`
                     SET `name` = :name
-                    WHERE `$type` = :char";
+                    WHERE `guid` = :char';
             $stmt = $this->db['char']->prepare($sql);
 
             // устанавливаем нужный регистр
@@ -61,70 +61,42 @@ class CharactersModel extends Model {
             $stmt->bindValue(':name', $name);
             $stmt->bindValue(':char', $char);
             $stmt->execute();
-            if ( $stmt->rowCount() == 1 ) {
-                $this->message[1] = 'Смена имени прошла успешно';
-            } else {
-                $this->message[0] = 'Персонаж с таким именем или id не найден';
-            }
-        } else {
-            $this->message[0] = 'Введены некорректные данные';
         }
     }
 
-    public function changeCharRace($char, $race, $type) {
-        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && ($race > 0 && $race < 9) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
-            $sql = "UPDATE `{$this->config['db.char']}`.`characters`
+    public function changeCharRace($char, $race) {
+        if ( preg_match("/^[0-9]+$/", $char) && ($race > 0 && $race < 9) ) {
+            $sql = 'UPDATE `'.$this->config['db.char'].'`.`characters`
                     SET `race` = :race
-                    WHERE `$type` = :char";
+                    WHERE `guid` = :char';
             $stmt = $this->db['char']->prepare($sql);
             $stmt->bindValue(':race', (int)$race);
             $stmt->bindValue(':char', $char);
             $stmt->execute();
-            if ( $stmt->rowCount() == 1 ) {
-                $this->message[1] = 'Смена расы прошла успешно';
-            } else {
-                $this->message[0] = 'Персонаж с таким именем или id не найден';
-            }
-        } else {
-            $this->message[0] = 'Введены некорректные данные';
         }
     }
 
-    public function changeCharClass($char, $class, $type) {
-        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && ($class > 0 && $class < 12 && $class != 10) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
-            $sql = "UPDATE `{$this->config['db.char']}`.`characters`
+    public function changeCharClass($char, $class) {
+        if ( preg_match("/^[0-9]+$/", $char) && ($class > 0 && $class < 12 && $class != 10) ) {
+            $sql = 'UPDATE `'.$this->config['db.char'].'`.`characters`
                     SET `class` = :class
-                    WHERE `$type` = :char";
+                    WHERE `guid` = :char';
             $stmt = $this->db['char']->prepare($sql);
-            $stmt->bindValue(':class', (int)$class);
+            $stmt->bindValue(':class', $class);
             $stmt->bindValue(':char', $char);
             $stmt->execute();
-            if ( $stmt->rowCount() == 1 ) {
-                $this->message[1] = 'Смена класса прошла успешно';
-            } else {
-                $this->message[0] = 'Персонаж с таким именем или id не найден';
-            }
-        } else {
-            $this->message[0] = 'Введены некорректные данные';
         }
     }
 
-    public function changeCharLevel($char, $level, $type) {
-        if ( preg_match("/^[a-zA-Zа-яА-ЯёЁ0-9]+$/u", $char) && ($level > 0 && $level < 256) && preg_match("/^[a-zA-Z]+$/u", $type) ) {
-            $sql = "UPDATE `{$this->config['db.char']}`.`characters`
+    public function changeCharLevel($char, $level) {
+        if ( preg_match("/^[0-9]+$/", $char) && ($level > 0 && $level < 256) ) {
+            $sql = 'UPDATE `'.$this->config['db.char'].'`.`characters`
                     SET `level` = :level
-                    WHERE `$type` = :char";
+                    WHERE `guid` = :char';
             $stmt = $this->db['char']->prepare($sql);
-            $stmt->bindValue(':level', (int)$level);
+            $stmt->bindValue(':level', $level);
             $stmt->bindValue(':char', $char);
             $stmt->execute();
-            if ( $stmt->rowCount() == 1 ) {
-                $this->message[1] = 'Смена уровня прошла успешно';
-            } else {
-                $this->message[0] = 'Персонаж с таким именем или id не найден';
-            }
-        } else {
-            $this->message[0] = 'Введены некорректные данные';
         }
     }
 }

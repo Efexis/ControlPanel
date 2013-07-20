@@ -5,8 +5,10 @@
         <link rel="stylesheet" href="application/views/css/style.css" />
         <link rel="stylesheet" href="application/views/css/bootstrap.min.css" /">
         <link rel="stylesheet" href="application/views/css/style.color.css" />
+        <link rel="stylesheet" href="application/views/css/bootstrap-editable.css" />
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script src="application/views/js/bootstrap.min.js"></script>
+        <script src="application/views/js/bootstrap-editable.min.js"></script>
         <script src="application/views/js/menu.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
@@ -35,37 +37,10 @@
 <div id="sidebar">
     <ul>
         <li><a href="?route=index/main"><i class="icon icon-home"></i> <span>Главная</span></a></li>
-        <li class="submenu">
-            <a href="#"><i class="icon-th-list"></i> <span>Управление персонажами</span></a>
-            <ul>
-                <li><a href="?route=characters/search">Поиск персонажа</a></li>
-                <li><a href="?route=characters/changename">Смена имени</a></li>
-                <li><a href="?route=characters/changerace">Смена расы</a></li>
-                <li><a href="?route=characters/changeclass">Смена класса</a></li>
-                <li><a href="?route=characters/changelevel">Смена уровня</a></li>
-            </ul>
-        </li>
-        <li class="submenu">
-            <a href="#"><i class="icon-th-list"></i> <span>Управление аккуантами</span></a>
-            <ul>
-                <li><a href="?route=account/search">Поиск аккуанта</a></li>
-                <li><a href="#">Редактирование аккуанта</a></li>
-            </ul>
-        </li>
-        <li class="submenu">
-            <a href="#"><i class="icon-th-list"></i> <span>Управление командами</span></a>
-            <ul>
-                <li><a href="?route=team/search">Поиск команды</a></li>
-                <li><a href="#">Редактирование команды</a></li>
-            </ul>
-        </li>
-        <li class="submenu">
-            <a href="#"><i class="icon-th-list"></i> <span>Управление гильдиями</span></a>
-            <ul>
-                <li><a href="?route=guild/search">Поиск гильдии</a></li>
-                <li><a href="#">Редактирование гильдии</a></li>
-            </ul>
-        </li>
+        <li><a href="?route=characters/search"><i class="icon-th-list"></i> <span>Управление персонажами</span></a></li>
+        <li><a href="?route=account/search"><i class="icon-th-list"></i> <span>Управление аккуантами</span></a></li>
+        <li><a href="?route=team/search"><i class="icon-th-list"></i> <span>Управление командами</span></a></li>
+        <li><a href="?route=guild/search"><i class="icon-th-list"></i> <span>Управление гильдиями</span></a></li>
     </ul>
 </div>
 

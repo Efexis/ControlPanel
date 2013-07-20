@@ -45,5 +45,14 @@ class Model {
 
         return $g.'<img src="application/views/img/money/gold.png"></img> '.$s.'<img src="application/views/img/money/silver.png"></img> '.$c.'<img src="application/views/img/money/copper.png"></img>';
     }
+
+    public function redirect($addr, $params = NULL) {
+        $str = '<script>document.location.href = "?route=' . $addr;
+        if ( $params ) {
+            $str .= '&' . $params;
+        }
+        $str .= '";</script>';
+        echo $str;
+    }
 }
 ?>

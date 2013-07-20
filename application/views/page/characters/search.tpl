@@ -1,3 +1,4 @@
+<script src="application/views/js/page/characters.js"></script>
 <div id="content-header">
     <h1>Управление персонажами</h1>
     <div class="btn-group"></div>
@@ -5,7 +6,6 @@
 <div id="breadcrumb">
     <a href="?route=index/main" class="tip-bottom"><i class="icon-home"></i>Главная</a>
     <a href="#" class="current">Управление персонажами</a>
-    <a href="#" class="current">Поиск персонажа</a>
 </div>
 <div class="container-fluid">
     <div class="row-fluid">
@@ -14,13 +14,13 @@
                 <div class="widget-title"><span class="icon"><i class="icon-search"></i></span><h5>Поиск персонажа</h5></div>
                 <div class="widget-content">
                     <div class="row-fluid">
-                        <form action="" method="POST" class="form-search">
+                        <form action="?route=characters/search" method="POST" class="form-search">
                             <select selected="key" name="type" class="select">
                                 <option value="name">Name</option>
                                 <option value="guid">id</option>
                             </select>
                             <div class="input-append">
-                                <input type="text" name="character" pattern="[a-zA-Zа-яА-ЯёЁ0-9]+$" class="span10 search-query" />
+                                <input type="text" name="character" pattern="^([a-zA-Z]{2,12}|[а-яА-ЯёЁ]{2,12}|[0-9]{1,10})$" class="span10 search-query" />
                                 <button type="submit" class="btn">Поиск</button>
                             </div>
                         </form>
@@ -34,7 +34,7 @@
                             </tr>
                             <tr>
                                 <td>Имя</td>
-                                <td><?php echo $charInfo['name'] ?></td>
+                                <td><a href="#" id="name" data-pk="<?php echo $charInfo['guid']; ?>"><?php echo $charInfo['name'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Аккуант</td>
@@ -46,11 +46,11 @@
                             </tr>
                             <tr>
                                 <td>Раса</td>
-                                <td><?php echo $charInfo['race'] ?></td>
+                                <td><a href="#" id="race" data-pk="<?php echo $charInfo['guid']; ?>"><?php echo $charInfo['race'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Класс</td>
-                                <td><?php echo $charInfo['class'] ?></td>
+                                <td><a href="#" id="class" data-pk="<?php echo $charInfo['guid']; ?>"><?php echo $charInfo['class'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Пол</td>
@@ -58,7 +58,7 @@
                             </tr>
                             <tr>
                                 <td>Уровень</td>
-                                <td><?php echo $charInfo['level'] ?></td>
+                                <td><a href="#" id="level" data-pk="<?php echo $charInfo['guid']; ?>"><?php echo $charInfo['level'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Денег</td>

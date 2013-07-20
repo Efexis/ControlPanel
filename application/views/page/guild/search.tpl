@@ -5,7 +5,6 @@
 <div id="breadcrumb">
     <a href="?route=index/main" class="tip-bottom"><i class="icon-home"></i>Главная</a>
     <a href="#" class="current">Управление гильдиями</a>
-    <a href="#" class="current">Поиск гильдии</a>
 </div>
 <div class="container-fluid">
     <div class="row-fluid">
@@ -20,7 +19,7 @@
                                 <option value="guildid">id</option>
                             </select>
                             <div class="input-append">
-                                <input type="text" name="guild" pattern="[a-zA-Zа-яА-ЯёЁ0-9\s]+$" class="span10 search-query" />
+                                <input type="text" name="guild" pattern="^([a-zA-Z\s]{2,24}|[а-яА-ЯёЁ\s]{2,24}|[0-9]{1,10})$" class="span10 search-query" />
                                 <button type="submit" class="btn">Поиск</button>
                             </div>
                         </form>

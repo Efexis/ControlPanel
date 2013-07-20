@@ -22,40 +22,49 @@ class CharactersController {
     }
 
     public function searchAction () {
-        $data['charInfo'] = isset($_POST['character'], $_POST['type']) ? $this->model->searchChar($_POST['character'], $_POST['type']) : NULL;
+        if ( isset($_POST['character'], $_POST['type']) ) {
+            $data['charInfo'] = $this->model->searchChar($_POST['character'], $_POST['type']);
+        } else if ( isset($_GET['character']) ) {
+            $data['charInfo'] = $this->model->searchChar($_GET['character'], 'guid');
+        } else {
+            $data['charInfo'] = NULL;
+        }
+
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/characters/search.tpl' , $data);
     }
 
     public function changeNameAction () {
-        if ( isset($_POST['character'], $_POST['name'], $_POST['type']) ) {
-            $this->model->changeCharName($_POST['character'], $_POST['name'], $_POST['type']);
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'name' ) {
+                $this->model->changeCharName($_POST['pk'], $_POST['value']);
+                $this->model->redirect('characters/search', 'character=' . $_POST['pk']);
+            }
         }
-        $data['message'] = $this->model->message;
-        $this->view->generate('index.tpl', 'page/characters/changename.tpl' , $data);
     }
 
     public function changeRaceAction () {
-        if ( isset($_POST['character'], $_POST['race'], $_POST['type']) ) {
-            $this->model->changeCharRace($_POST['character'], $_POST['race'], $_POST['type']);
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'race' ) {
+                $this->model->changeCharRace($_POST['pk'], $_POST['value']);
+                $this->model->redirect('characters/search', 'character=' . $_POST['pk']);
+            }
         }
-        $data['message'] = $this->model->message;
-        $this->view->generate('index.tpl', 'page/characters/changerace.tpl' , $data);
     }
 
     public function changeClassAction () {
-        if ( isset($_POST['character'], $_POST['class'], $_POST['type']) ) {
-            $this->model->changeCharClass($_POST['character'], $_POST['class'], $_POST['type']);
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'class' ) {
+                $this->model->changeCharClass($_POST['pk'], $_POST['value']);
+            }
         }
-        $data['message'] = $this->model->message;
-        $this->view->generate('index.tpl', 'page/characters/changeclass.tpl' , $data);
     }
 
     public function changeLevelAction () {
-        if ( isset($_POST['character'], $_POST['level'], $_POST['type']) ) {
-            $this->model->changeCharLevel($_POST['character'], $_POST['level'], $_POST['type']);
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'level' ) {
+                $this->model->changeCharLevel($_POST['pk'], $_POST['value']);
+            }
         }
-        $data['message'] = $this->model->message;
-        $this->view->generate('index.tpl', 'page/characters/changelevel.tpl' , $data);
     }
 }
