@@ -33,5 +33,14 @@ class GuildController {
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/guild/search.tpl' , $data);
     }
+
+    public function changeNameAction () {
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'name' ) {
+                $this->model->changeGuildName($_POST['pk'], $_POST['value']);
+                $this->model->redirect('guild/search', 'guild=' . $_POST['pk']);
+            }
+        }
+    }
 }
 ?>

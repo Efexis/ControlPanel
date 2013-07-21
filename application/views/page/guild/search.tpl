@@ -1,3 +1,4 @@
+<script src="application/views/js/page/guild.js"></script>
 <div id="content-header">
     <h1>Управление гильдиями</h1>
     <div class="btn-group"></div>
@@ -33,7 +34,7 @@
                             </tr>
                             <tr>
                                 <td>Название</td>
-                                <td><?php echo $guildInfo['name'] ?></td>
+                                <td><a href="#" id="name" data-pk="<?php echo $guildInfo['guildid']; ?>"><?php echo $guildInfo['name'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Лидер</td>

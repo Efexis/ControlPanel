@@ -43,5 +43,17 @@ class GuildModel extends Model {
             $this->message = 'Введены некорректные данные';
         }
     }
+
+    public function changeGuildName($guild, $name) {
+        if ( preg_match("/^[0-9]+$/", $guild) && preg_match("/^([a-zA-Z\s]{2,24}|[а-яА-ЯёЁ\s]{2,24})$/u", $name) ) {
+            $sql = 'UPDATE `'.$this->config['db.char'].'`.`guild`
+                    SET `name` = :name
+                    WHERE `guildid` = :guild';
+            $stmt = $this->db['char']->prepare($sql);
+            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':guild', $guild);
+            $stmt->execute();
+        }
+    }
 }
 ?>
