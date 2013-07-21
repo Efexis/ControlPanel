@@ -24,8 +24,8 @@ class TeamController {
     public function searchAction() {
         if ( isset($_POST['at'], $_POST['at_type'], $_POST['type']) ) {
             $data['atInfo'] = $this->model->searchTeam($_POST['at'], $_POST['at_type'], $_POST['type']);
-        } else if ( isset($_GET['team'], $_GET['type']) ) {
-            $data['atInfo'] = $this->model->searchTeam($_GET['team'], $_GET['type'], 'arenaTeamId');
+        } else if ( isset($_GET['team']) ) {
+            $data['atInfo'] = $this->model->searchTeam($_GET['team'], NULL, 'arenaTeamId');
         } else {
             $data['atInfo'] = NULL;
         }
