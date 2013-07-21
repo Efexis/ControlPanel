@@ -10,7 +10,7 @@ $(document).ready(function(){
 			if(text == '') {
 				return 'Название не может быть пустым';
 			} else if(text.length < 2 || text.length > 24) {
-				return 'Название должно содержать от 2 до 12 символов';
+				return 'Название должно содержать от 2 до 24 символов';
 			}
 		},
 		success: function(response) {
