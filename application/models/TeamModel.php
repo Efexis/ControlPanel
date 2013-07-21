@@ -51,4 +51,15 @@ class TeamModel extends Model{
         }
     }
 
+    public function changeTeamName($team, $name) {
+        if ( preg_match("/^[0-9]+$/", $team) && preg_match("/^([a-zA-Z\s]{2,24}|[а-яА-ЯёЁ\s]{2,24})$/u", $name) ) {
+            $sql = 'UPDATE `'.$this->config['db.char'].'`.`arena_team`
+                    SET `name` = :name
+                    WHERE `arenaTeamId` = :team';
+            $stmt = $this->db['char']->prepare($sql);
+            $stmt->bindValue(':name', $name);
+            $stmt->bindValue(':team', $team);
+            $stmt->execute();
+        }
+    }
 }

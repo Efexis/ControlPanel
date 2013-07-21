@@ -33,4 +33,13 @@ class TeamController {
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/team/search.tpl', $data);
     }
+
+    public function changeNameAction () {
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'name' ) {
+                $this->model->changeTeamName($_POST['pk'], $_POST['value']);
+                $this->model->redirect('team/search', 'team=' . $_POST['pk']);
+            }
+        }
+    }
 }

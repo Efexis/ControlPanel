@@ -1,3 +1,4 @@
+<script src="application/views/js/page/team.js"></script>
 <div id="content-header">
     <h1>Управление командами арены</h1>
     <div class="btn-group"></div>
@@ -39,7 +40,7 @@
                             </tr>
                             <tr>
                                 <td>Название</td>
-                                <td><?php echo $atInfo['name'] ?></td>
+                                <td><a href="#" id="name" data-pk="<?php echo $atInfo['arenaTeamId']; ?>"><?php echo $atInfo['name'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Тип команды</td>
