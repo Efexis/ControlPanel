@@ -1,3 +1,4 @@
+<script src="application/views/js/page/account.js"></script>
 <div id="content-header">
     <h1>Управление аккуантами</h1>
     <div class="btn-group"></div>
@@ -61,7 +62,7 @@
                             </tr>
                             <tr>
                                 <td>Привязан к IP</td>
-                                <td><?php echo $accInfo['locked'] ?></td>
+                                <td><a href="#" id="locked" data-pk="<?php echo $accInfo['id']; ?>"><?php echo $accInfo['locked'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Статус</td>

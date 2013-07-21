@@ -33,4 +33,12 @@ class AccountController {
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/account/search.tpl', $data);
     }
+
+    public function lockedAction () {
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'locked' ) {
+                $this->model->lockedAccount($_POST['pk'], $_POST['value']);
+            }
+        }
+    }
 }

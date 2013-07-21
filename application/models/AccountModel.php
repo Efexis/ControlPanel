@@ -41,5 +41,17 @@ class AccountModel extends Model {
             $this->message = 'Введены некорректные данные';
         }
     }
+
+    public function lockedAccount($acc, $locked) {
+        if ( preg_match("/^[0-9]+$/", $acc) && ($locked == 0 || $locked == 1) ) {
+            $sql = 'UPDATE `'.$this->config['db.auth'].'`.`account`
+                    SET `locked` = :locked
+                    WHERE `id` = :acc';
+            $stmt = $this->db['auth']->prepare($sql);
+            $stmt->bindValue(':locked', (int)$locked);
+            $stmt->bindValue(':acc', $acc);
+            $stmt->execute();
+        }
+    }
 }
 ?>
