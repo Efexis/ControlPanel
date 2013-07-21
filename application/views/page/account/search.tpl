@@ -19,7 +19,7 @@
                                 <option value="id">id</option>
                             </select>
                             <div class="input-append">
-                                <input type="text" name="account" pattern="^([a-zA-Z]{1,32}|[0-9]{1,10})$" class="span10 search-query" />
+                                <input type="text" name="account" pattern="^[a-zA-Z0-9_-]+$" class="span10 search-query" />
                                 <button type="submit" class="btn">Поиск</button>
                             </div>
                         </form>
