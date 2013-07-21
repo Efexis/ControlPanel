@@ -13,7 +13,7 @@
                 <div class="widget-title"><span class="icon"><i class="icon-search"></i></span><h5>Поиск гильдии</h5></div>
                 <div class="widget-content">
                     <div class="row-fluid">
-                        <form action="" method="POST" class="form-search">
+                        <form action="?route=guild/search" method="POST" class="form-search">
                             <select selected="key" name="type" class="select">
                                 <option value="name">Name</option>
                                 <option value="guildid">id</option>

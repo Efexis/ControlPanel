@@ -13,7 +13,7 @@
                 <div class="widget-title"><span class="icon"><i class="icon-search"></i></span><h5>Поиск аккуанта</h5></div>
                 <div class="widget-content">
                     <div class="row-fluid">
-                        <form action="" method="POST" class="form-search">
+                        <form action="?route=account/search" method="POST" class="form-search">
                             <select selected="key" name="type" class="select">
                                 <option value="username">Name</option>
                                 <option value="id">id</option>

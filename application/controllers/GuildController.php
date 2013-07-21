@@ -22,7 +22,14 @@ class GuildController {
     }
 
     public function searchAction() {
-        $data['guildInfo'] = isset($_POST['guild'], $_POST['type']) ? $this->model->searchGuild($_POST['guild'], $_POST['type']) : NULL;
+        if ( isset($_POST['guild'], $_POST['type']) ) {
+            $data['guildInfo'] = $this->model->searchGuild($_POST['guild'], $_POST['type']);
+        } else if ( isset($_GET['guild']) ) {
+            $data['guildInfo'] = $this->model->searchGuild($_GET['guild'], 'guildid');
+        } else {
+            $data['guildInfo'] = NULL;
+        }
+
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/guild/search.tpl' , $data);
     }

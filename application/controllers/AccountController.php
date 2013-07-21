@@ -22,7 +22,14 @@ class AccountController {
     }
 
     public function searchAction () {
-        $data['accInfo'] = isset($_POST['account'], $_POST['type']) ? $this->model->searchAccount($_POST['account'], $_POST['type']) : NULL;
+        if ( isset($_POST['account'], $_POST['type']) ) {
+            $data['accInfo'] = $this->model->searchAccount($_POST['account'], $_POST['type']);
+        } else if ( isset($_GET['account']) ) {
+            $data['accInfo'] = $this->model->searchAccount($_GET['account'], 'id');
+        } else {
+            $data['accInfo'] = NULL;
+        }
+
         $data['message'] = $this->model->message;
         $this->view->generate('index.tpl', 'page/account/search.tpl', $data);
     }
