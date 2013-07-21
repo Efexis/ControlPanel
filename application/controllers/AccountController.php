@@ -41,4 +41,12 @@ class AccountController {
             }
         }
     }
+
+    public function changeExpansionAction () {
+        if ( isset($_POST['name'], $_POST['pk'], $_POST['value']) ) {
+            if ( $_POST['name'] == 'expansion' ) {
+                $this->model->changeExpansion($_POST['pk'], $_POST['value']);
+            }
+        }
+    }
 }

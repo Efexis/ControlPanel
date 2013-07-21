@@ -53,5 +53,17 @@ class AccountModel extends Model {
             $stmt->execute();
         }
     }
+
+    public function changeExpansion($acc, $expansion) {
+        if ( preg_match("/^[0-9]+$/", $acc) && preg_match("/^[0-9]+$/", $expansion) ) {
+            $sql = 'UPDATE `'.$this->config['db.auth'].'`.`account`
+                    SET `expansion` = :expansion
+                    WHERE `id` = :acc';
+            $stmt = $this->db['auth']->prepare($sql);
+            $stmt->bindValue(':expansion', $expansion);
+            $stmt->bindValue(':acc', $acc);
+            $stmt->execute();
+        }
+    }
 }
 ?>

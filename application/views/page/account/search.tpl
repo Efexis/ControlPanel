@@ -58,7 +58,7 @@
                             </tr>
                             <tr>
                                 <td>Дополнение</td>
-                                <td><?php echo $accInfo['expansion'] ?></td>
+                                <td><a href="#" id="expansion" data-pk="<?php echo $accInfo['id']; ?>"><?php echo $accInfo['expansion'] ?></a></td>
                             </tr>
                             <tr>
                                 <td>Привязан к IP</td>

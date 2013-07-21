@@ -8,4 +8,15 @@ $(document).ready(function(){
             {value: 1, text: 'Да'}
         ]
     });
+
+    $('#expansion').editable({
+        type: 'select',
+        url: '?route=account/changeexpansion',
+        title: 'Смена дополнения',
+        source: [
+            {value: 0, text: 'Classic'},
+            {value: 1, text: 'TBC'},
+            {value: 2, text: 'WotLK'}
+        ]
+    });
 });
